@@ -97,3 +97,23 @@ const questions = () => {
                         return false;
                     }}},])
             };
+
+// TODO: Create a function to write README file
+const writeFile = data => {
+    fs.writeFile('README.md', data, err => {
+        if (err) {
+            console.log(err);
+            return;
+        } else {
+            console.log("Your README has been created.")
+        }})}; 
+
+
+// TODO: Create a function to initialize app
+function init() { questions()
+    .then(answers => {
+        return generateMarkdown(answers);})
+    .then( data => {
+        return writeFile(data);}) };
+
+init();
